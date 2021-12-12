@@ -1,10 +1,16 @@
-def select(arr, i):
-    # code here 
-    return min(arr)
-def selectionSort(arr,n):        
-    #code here
-    for i in range(len(arr)):
-        value = arr.index(select(arr[i:],i))
-        (arr[i],arr[value]) = (arr[value],arr[i])
-    return arr
-print(selectionSort([4,1,3,9,7], 5))
+class Solution: 
+    def select(self, arr, i):
+        # code here 
+        minimum = i-1
+        for j in range(i,len(arr)):
+            if arr[minimum] > arr[j]:
+                minimum = j
+        return minimum
+    def selectionSort(self, arr,n):
+        #code here
+        for i in range(len(arr)-1):
+            minimum = i
+            minimum = select(arr,i+1)
+            (arr[i],arr[minimum])=(arr[minimum],arr[i])
+
+        return arr

@@ -3,5 +3,8 @@ def reorganize(str):
         return
 
 
-
+[a,a,a]
+[b,b]
+[c]
+.
 
