@@ -1,0 +1,10 @@
+class Solution(object):
+    def earliestFullBloom(self, plantTime, growTime):
+        plants = [(plantTime[i],growTime[i]) for i in range(len(plantTime))]
+        plants.sort(key=lambda x:-x[1])
+        day = 0
+        maxBloom = 0
+        for i in plants:
+            day += i[0]
+            maxBloom = max(maxBloom,day+i[1])
+        return max(day,maxBloom)
