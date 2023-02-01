@@ -1,0 +1,17 @@
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        n,m = len(mat),len(mat[0])
+        result = [[0]*m for i in range(n)]
+        print(result)
+        for i in range(n):
+            for j in range(m):
+                for ni in range(-k,k+1):
+                    if( ni+i >= 0 and ni + i<n):
+                        result[ni+i][max(j-k,0)] += mat[i][j]
+                        if(j+k+1 < m): result[ni+i][j+k+1] -= mat[i][j]
+        for r in range(n):
+            prefix = 0
+            for c in range(m):
+                prefix += result[r][c]
+                result[r][c] = prefix
+        return result
